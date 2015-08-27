@@ -1,7 +1,9 @@
+
 function add(a, b) {
     return a + b;
 }
 exports.add = add;
+
 var Greeter = (function () {
     function Greeter(message) {
         this.greeting = message;

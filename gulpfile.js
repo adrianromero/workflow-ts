@@ -6,16 +6,21 @@ var gulp = require('gulp'),
   tsify = require('tsify'),
   source = require('vinyl-source-stream');
 
- var config = {
-   sourceFolder: './ts/',
-   sourceFile: 'index.ts',
-   destFolder: './web/',
-   destFile: 'build.js',
-   watchExtension: '*.ts',
-   debug: true,
- };
+var config = {
+  sourceFolder: './ts/',
+  sourceFile: 'index.ts',
+  destFolder: './web/',
+  destFile: 'build.js',
+  watchExtension: '*.ts',
+  debug: true,
+};
 
-gulp.task('browserify', function() {
+gulp.task('default', ['.build']);
+gulp.task('.build', ['build.browserify'])
+gulp.task('.develop-start', ['develop.server', 'develop.watch']);
+gulp.task('.develop-stop', ['develop.serverclose']);
+
+gulp.task('build.browserify', function() {
   var bundler = browserify({
       basedir: config.sourceFolder,
       debug: config.debug
@@ -28,23 +33,23 @@ gulp.task('browserify', function() {
   .pipe(gulp.dest(config.destFolder));
 });
 
-gulp.task('watch', function() {
-  gulp.watch(config.sourceFolder + '**/' + config.watchExtension, ['browserify']);
-  gulp.watch(config.destFolder + config.destFile, ['html']);
+gulp.task('develop.watch', function() {
+  gulp.watch(config.sourceFolder + '**/' + config.watchExtension, ['build.browserify']);
+  gulp.watch(config.destFolder + config.destFile, ['develop.html']);
 });
 
-gulp.task('html', function () {
+gulp.task('develop.html', function () {
     gulp.src(config.destFolder + config.destFile)
     .pipe(connect.reload());
 });
 
-gulp.task('connect', function() {
+gulp.task('develop.server', function() {
   connect.server({
     root: config.destFolder,
     livereload: true
   });
 });
 
-
-gulp.task('default', ['browserify']);
-gulp.task('develop', ['connect', 'watch']);
+gulp.task('develop.serverclose', function() {
+  // do nothing
+});
