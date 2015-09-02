@@ -4,7 +4,7 @@
  * @param a - First number
  * @param b - Second number
  */
-export function add(a: number, b : number): number {
+export function add(a: number, b: number): number {
     return a + b;
 }
 
@@ -21,6 +21,6 @@ export class Greeter {
      * Main method that says hello.
      */
     greet() {
-        return "Hello, " + this.greeting + '!';
+        return 'Hello, ' + this.greeting + '!';
     }
 }
