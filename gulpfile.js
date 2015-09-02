@@ -35,10 +35,10 @@ gulp.task('build.browserify', function() {
 
 gulp.task('develop.watch', function() {
   gulp.watch(config.sourceFolder + '**/' + config.watchExtension, ['build.browserify']);
-  gulp.watch(config.destFolder + config.destFile, ['develop.html']);
+  gulp.watch(config.destFolder + config.destFile, ['develop.reload']);
 });
 
-gulp.task('develop.html', function () {
+gulp.task('develop.reload', function () {
     gulp.src(config.destFolder + config.destFile)
     .pipe(connect.reload());
 });
