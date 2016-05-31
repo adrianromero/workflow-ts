@@ -1,3 +1,4 @@
+"use strict";
 function add(a, b) {
     return a + b;
 }
@@ -10,5 +11,5 @@ var Greeter = (function () {
         return 'Hello, ' + this.greeting + '!';
     };
     return Greeter;
-})();
+}());
 exports.Greeter = Greeter;

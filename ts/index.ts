@@ -1,7 +1,7 @@
-/// <reference path="../typings/tsd.d.ts" />
+/// <reference path="../typings/index.d.ts" />
 
-import mymaths = require('./mymaths');
-import _ = require('underscore');
+import * as mymaths from './mymaths';
+import * as _ from 'underscore';
 
 console.log('Hello TypeScript!!!');
 console.log('Calculate 2 + 2 = %d.', mymaths.add(2, 2));

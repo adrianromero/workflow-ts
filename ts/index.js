@@ -1,4 +1,4 @@
-/// <reference path="../typings/tsd.d.ts" />
+"use strict";
 var mymaths = require('./mymaths');
 var _ = require('underscore');
 console.log('Hello TypeScript!!!');

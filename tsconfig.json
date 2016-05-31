@@ -17,7 +17,11 @@
     "files": [
         "./ts/index.ts",
         "./ts/mymaths.ts",
-        "./typings/tsd.d.ts",
-        "./typings/underscore/underscore.d.ts"
-    ]
+        "./typings/globals/underscore/index.d.ts",
+        "./typings/index.d.ts",
+        "./typings/modules/debug/index.d.ts"
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    }
 }
